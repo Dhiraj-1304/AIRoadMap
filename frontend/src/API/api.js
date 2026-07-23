@@ -13,34 +13,34 @@ export const registerUser = async (userData) => {
 };
 
 export const loginUser = async (userData) => {
-  const response = await API.post("/auth/loginUser", userData);
+  const response = await API.post("/api/auth/loginUser", userData);
   return response.data;
 };
 
 export const refreshToken = async (refreshToken) => {
-  const response = await API.post("/auth/refreshToken", { refreshToken });
+  const response = await API.post("/api/auth/refreshToken", { refreshToken });
   return response.data;
 };
 
 export const logoutUser = async () => {
-  const response = await API.post("/auth/logoutUser");
+  const response = await API.post("/api/auth/logoutUser");
 
   return response.data;
 };
 
 export const getUserRoadmap = async () => {
-  const response = await API.get(`/roadmap/myroadmap/`);
+  const response = await API.get(`/api/roadmap/myroadmap/`);
   return response.data;
 }
 export const getRoadmapById = async (id) => {
    console.log("Fetching roadmap:", id);
-  const response = await API.get(`/roadmap/${id}`);
+  const response = await API.get(`/api/roadmap/${id}`);
   console.log("Response:", response.data);
   return response.data;
 }
 
 export const deleteRoadmap = async (id) => {
-  const response = await API.delete(`/roadmap/${id}`);
+  const response = await API.delete(`/api/roadmap/${id}`);
   console.log("Deleted roadmap:", id);
   return response.data;
   
