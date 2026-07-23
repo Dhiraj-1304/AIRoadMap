@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PublicOnlyRoute from './components/PublicOnlyRoute';
 import MyRoadmap from './pages/MyRoadmap';
 import RoadmapDetails from './pages/RoadMapDetails';
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,9 @@ const router = createBrowserRouter([
           },{
             path: "/roadmap/:id",
             element : <RoadmapDetails />,
+          },{
+            path: "/profile",
+            element : <Profile />,
           }
         ]
       }

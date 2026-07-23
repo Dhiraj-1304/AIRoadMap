@@ -1,76 +1,84 @@
-// import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Circle } from 'lucide-react';
 
 const roadmapNodes = [
-  { title: "HTML & CSS", status: "completed" },
-  { title: "JavaScript", status: "current" },
-  { title: "React", status: "upcoming" },
-  { title: "Backend", status: "upcoming" },
-  { title: "Deployment", status: "upcoming" }
+  { title: "HTML & CSS", status: "completed", desc: "Semantic markup, styling fundamentals, Flexbox & Grid." },
+  { title: "JavaScript", status: "current", desc: "DOM interactions, Async/Await, Array methods & ES6+ features." },
+  { title: "React Engine", status: "upcoming", desc: "Hooks, state management, component cycles & virtual DOM." },
+  { title: "Backend API", status: "upcoming", desc: "Node.js, Express framework, database schemas & API routing." },
+  { title: "Deployment", status: "upcoming", desc: "CI/CD pipelines, SSL setups, DNS routing & cloud hosting." }
 ];
 
 const RoadmapPreview = () => {
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <section className="py-24 px-6 relative bg-[#020617]">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Interactive Roadmaps</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">A sneak peek into how your personalized curriculum is structured.</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Interactive Roadmaps
+          </h2>
+          <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+            Get a preview of how your AI-customized learning curriculum will be structured.
+          </p>
         </div>
 
-        <div className="glass-card p-8 md:p-12 rounded-3xl border border-white/10 relative overflow-hidden">
+        <div className="relative rounded-[32px] bg-white/[0.02] border border-white/[0.06] p-8 md:p-12 overflow-hidden shadow-2xl">
           {/* Subtle grid background inside the card */}
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
           
           <div className="relative z-10">
-            <h3 className="text-2xl font-bold text-white mb-10 text-center">Frontend Developer Roadmap</h3>
+            <h3 className="text-xl font-bold text-white mb-12 text-center">Frontend Developer Sample Path</h3>
             
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between relative gap-8 md:gap-0">
+            <div className="flex flex-col md:flex-row items-start md:items-stretch justify-between relative gap-8 md:gap-4">
               {/* Connecting Line (Desktop) */}
-              <div className="hidden md:block absolute top-6 left-10 right-10 h-0.5 bg-gray-800 z-0" />
+              <div className="hidden md:block absolute top-7 left-10 right-10 h-0.5 bg-white/5 z-0" />
               <motion.div 
                 initial={{ width: 0 }}
                 whileInView={{ width: "35%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="hidden md:block absolute top-6 left-10 h-0.5 bg-blue-500 z-0 shadow-[0_0_10px_rgba(59,130,246,0.8)]"
+                className="hidden md:block absolute top-7 left-10 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 z-0 shadow-[0_0_10px_rgba(139,92,246,0.5)]"
               />
 
               {/* Connecting Line (Mobile) */}
-              <div className="block md:hidden absolute left-6 top-10 bottom-10 w-0.5 bg-gray-800 z-0" />
+              <div className="block md:hidden absolute left-6 top-10 bottom-10 w-0.5 bg-white/5 z-0" />
               <motion.div 
                 initial={{ height: 0 }}
                 whileInView={{ height: "35%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="block md:hidden absolute left-6 top-10 w-0.5 bg-blue-500 z-0 shadow-[0_0_10px_rgba(59,130,246,0.8)]"
+                className="block md:hidden absolute left-6 top-10 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 z-0"
               />
 
               {roadmapNodes.map((node, idx) => (
                 <motion.div 
                   key={idx}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.2 }}
-                  className="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 w-full md:w-auto"
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  className="relative z-10 flex md:flex-col items-start md:items-center gap-4 md:gap-4 w-full md:w-1/5 text-left md:text-center"
                 >
-                  <div className="bg-[#030014] rounded-full p-1">
+                  <div className="bg-[#020617] rounded-full p-2 border border-white/[0.04]">
                     {node.status === 'completed' ? (
-                      <CheckCircle2 className="w-10 h-10 text-blue-500 fill-blue-500/20" />
+                      <CheckCircle2 className="w-10 h-10 text-blue-500 fill-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.2)]" />
                     ) : node.status === 'current' ? (
-                      <div className="w-10 h-10 rounded-full border-2 border-blue-500 flex items-center justify-center animate-pulse shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                        <div className="w-4 h-4 bg-blue-500 rounded-full" />
+                      <div className="w-10 h-10 rounded-full border-2 border-purple-500 flex items-center justify-center animate-pulse shadow-[0_0_15px_rgba(139,92,246,0.4)] bg-purple-500/5">
+                        <div className="w-3.5 h-3.5 bg-purple-500 rounded-full" />
                       </div>
                     ) : (
-                      <Circle className="w-10 h-10 text-gray-700" />
+                      <Circle className="w-10 h-10 text-slate-700" />
                     )}
                   </div>
-                  <div className={`font-medium ${node.status === 'completed' || node.status === 'current' ? 'text-white' : 'text-gray-500'}`}>
-                    {node.title}
+                  <div>
+                    <h4 className={`text-sm font-bold ${node.status === 'completed' || node.status === 'current' ? 'text-white' : 'text-slate-500'}`}>
+                      {node.title}
+                    </h4>
+                    <p className="text-[11px] text-slate-500 mt-1 max-w-[150px] leading-normal hidden md:block">
+                      {node.desc}
+                    </p>
                   </div>
                 </motion.div>
               ))}

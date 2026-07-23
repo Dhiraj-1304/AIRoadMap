@@ -42,6 +42,7 @@ export const getRoadmapById = async (id) => {
 export const deleteRoadmap = async (id) => {
   const response = await API.delete(`/roadmap/${id}`);
   console.log("Deleted roadmap:", id);
+  return response.data;
   
 }
 export default API;
