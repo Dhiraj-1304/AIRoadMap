@@ -13,7 +13,7 @@ const AIGenerator = () => {
     try {
       setIsGenerating(true);
       setIsGenerated(false);
-      const response = await API.post('/roadmap/generate', formData);
+      const response = await API.post('/api/roadmap/generate', formData);
       console.log(formData);
       console.log(response.data);
       setRoadmapData(response.data.roadmap);
