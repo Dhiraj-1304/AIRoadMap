@@ -9,7 +9,10 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: ["https://ai-road-map-ivory.vercel.app/login","http://localhost:5173"], credentials: true,
+  origin: ["https://ai-road-map-ivory.vercel.app/login",
+            "http://localhost:5173",
+            "https://ai-road-map-ivory.vercel.app"
+          ], credentials: true,
 }));
 app.use(express.json());
 app.use('/api/roadmap', roadmapRoutes);
