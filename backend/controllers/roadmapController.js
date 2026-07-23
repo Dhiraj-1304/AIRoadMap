@@ -107,4 +107,22 @@ export const getRoadmapById = async (req, res) => {
   
 };
 
+export const deleteRoadmapById = async (req, res) => {
+  try {
+    const deletedRoadmap = await roadMap.findById(req.params.id);
+    if (!deletedRoadmap) {
+      console.log("RoadMap not found")
+      return res.status(404).json({ error: "Roadmap not found" });
+    }
+    if(deletedRoadmap.user.toString() !== req.user._id.toString()){
+      return res.status(403).json({ error: "You are not authorized to delete this roadmap" });
+    }
+    await roadMap.deleteOne({ _id: req.params.id });
+    res.json({ message: "Roadmap deleted successfully", roadmap: deletedRoadmap });
+  } catch (error) {
+    console.error("Error deleting roadmap by ID:", error);
+    res.status(500).json({ error: "Failed to delete roadmap by ID" });
+  }
+};
+
 // export default roadmapController;
