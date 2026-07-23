@@ -8,7 +8,9 @@ import registerRoutes from "./routes/registerRoutes.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://ai-road-map-ivory.vercel.app/login","http://localhost:5173"], credentials: true,
+}));
 app.use(express.json());
 app.use('/api/roadmap', roadmapRoutes);
 app.use('/api/auth',registerRoutes);
