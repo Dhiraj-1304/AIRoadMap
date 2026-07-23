@@ -2,13 +2,13 @@
 import API from "./axiosInstance";
 
 export const generateRoadmap = async (roadmapData) => {
-  const response = await API.post("/roadmap/generate",roadmapData);
+  const response = await API.post("/api/roadmap/generate",roadmapData);
 
   return response.data;
 };
 
 export const registerUser = async (userData) => {
-  const response = await API.post("/auth/registerUser", userData);
+  const response = await API.post("/api/auth/registerUser", userData);
   return response.data;
 };
 
